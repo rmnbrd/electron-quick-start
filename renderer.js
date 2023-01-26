@@ -5,3 +5,16 @@
  * `contextIsolation` is turned on. Use the contextBridge API in `preload.js`
  * to expose Node.js functionality from the main process.
  */
+const startButton = document.getElementById('start')
+const reloadButton = document.getElementById('reload')
+
+startButton.addEventListener('click', async () => {
+     const context = new AudioContext()
+
+     console.log('Adding module')
+     await context.audioWorklet.addModule('worklet.js')
+})
+
+reloadButton.addEventListener('click', () => {
+     window.location.reload()
+})
